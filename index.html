@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Welcome to My Library</h1>
+    <button onclick="displayForm()" id="addBookButtonVisible">Add a book!</button>
+  </div>
+  
+  
+      <form id="formNotVisible">
+        <div class="formBox">
+          <label for="author">Author:</label>
+          <input type="text" id="author" placeholder="F. Scott Fitzgerald">
+        </div>
+        <div class="formBox">
+          <label for="title">Title:</label>
+          <input type="text" id="title" placeholder="The Great Gatsby">
+        </div>
+        <div class="formBox">
+          <label for="numOfPages">Number of pages:</label>
+          <input type="number" id="numOfPages" placeholder="365">
+        </div>
+        <div class="formBox">
+          <label for="read">Read?</label>
+          <input type="checkbox" id="read">
+        </div>
+        <button id="submitButton">Submit Book</button>
+      </form>
+  <script src="script.js"></script>
+</body>
+</html>
