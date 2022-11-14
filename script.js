@@ -1,7 +1,7 @@
 let myLibrary = [];
 let globalindex = 0;
 
-function Book(author, title, numOfPages, isRead) {
+/* function Book(author, title, numOfPages, isRead) {
   // the constructor...
   this.author = author;
   this.title = title;
@@ -9,18 +9,30 @@ function Book(author, title, numOfPages, isRead) {
   this.isRead = isRead;
   this.index = globalindex;
 
+} */
+
+class Book{
+  constructor(author, title, numOfPages, isRead, index) {
+    this.author = author;
+    this.title = title;
+    this.numOfPages = numOfPages;
+    this.isRead = isRead;
+    this.index = index;
+  }
 }
 
 const addBookToLibrary = (ev)=>{
   ev.preventDefault();
   cb = document.querySelector("#read");
-  let book = {
+  let book =  new Book(document.getElementById('author').value, document.getElementById('title').value, document.getElementById('numOfPages').value, cb.checked, globalindex)
+  
+  /*let book = {
     author: document.getElementById('author').value,
     title: document.getElementById('title').value,
     numOfPages: document.getElementById('numOfPages').value,
     read: cb.checked,
     index: globalindex
-  }
+  } */
   globalindex++;
   myLibrary.push(book);
   document.forms[0].reset();
