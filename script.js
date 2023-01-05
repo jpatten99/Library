@@ -95,11 +95,11 @@ function createDiv() {
   let author = myObj["author"];
   let title = myObj["title"];
   let numOfPages = myObj["numOfPages"];
-  let read = myObj["read"] === true ? 'read' : 'unread';
+  let read = myObj.isRead === true ? 'read' : 'unnnread';
   let index = myObj["index"];
   let div = document.createElement('div');
   div.setAttribute('id', (globalindex-1));
-  div.setAttribute('class', myObj['read']===true ? 'read' : 'unread');
+  div.setAttribute('class', myObj.isRead===true ? 'read' : 'unread');
   styleDiv(div);
   div.innerText = "author: " + author + "\n" + "title: " + title + "\n" + "Number of pages: " + numOfPages + "\n" + "Read/Unread: " + read + "\n"; 
   addButtons(div);
