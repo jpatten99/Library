@@ -1,16 +1,7 @@
-let myLibrary = [];
+let myLibrary = []; //This holds all the books of the library
 let globalindex = 0;
 
-/* function Book(author, title, numOfPages, isRead) {
-  // the constructor...
-  this.author = author;
-  this.title = title;
-  this.numOfPages = numOfPages;
-  this.isRead = isRead;
-  this.index = globalindex;
-
-} */
-
+//Defines a book's structure
 class Book{
   constructor(author, title, numOfPages, isRead, index) {
     this.author = author;
@@ -21,18 +12,11 @@ class Book{
   }
 }
 
+//Function to add the book to the array once the submit button is clicked
 const addBookToLibrary = (ev)=>{
   ev.preventDefault();
   cb = document.querySelector("#read");
   let book =  new Book(document.getElementById('author').value, document.getElementById('title').value, document.getElementById('numOfPages').value, cb.checked, globalindex)
-  
-  /*let book = {
-    author: document.getElementById('author').value,
-    title: document.getElementById('title').value,
-    numOfPages: document.getElementById('numOfPages').value,
-    read: cb.checked,
-    index: globalindex
-  } */
   globalindex++;
   myLibrary.push(book);
   document.forms[0].reset();
@@ -42,6 +26,7 @@ const addBookToLibrary = (ev)=>{
   console.log(cb.checked);
 } 
 
+//Make form visible in order to be able to add a book
 function displayForm() {
   var form = document.getElementById('formNotVisible');
   form.setAttribute('id', 'formVisible');
@@ -49,6 +34,7 @@ function displayForm() {
   addBookButton.setAttribute('id', 'addBookButtonNotVisible')
 }
 
+//After a book is submitted, display the button again to add a book
 function displayAddBookButton() {
   var form = document.getElementById('formVisible');
   form.setAttribute('id', 'formNotVisible');
@@ -56,16 +42,18 @@ function displayAddBookButton() {
   addBookButton.setAttribute('id', 'addBookButtonVisible')
 }
 
+//After everything is loaded, link submit button to addBook function
 document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('submitButton').addEventListener('click', addBookToLibrary);
 });
 
 
-
+//Used to generate background background colors for books
 function randomcolor() {
   return Math.floor(Math.random() * 255);
 }
 
+//This creates the visual part of the book
 function styleDiv(input) {
   input.style.backgroundColor= 'rgba('+randomcolor()+','+randomcolor()+','+randomcolor()+'\)';
   input.style.width="fit-content";
@@ -74,6 +62,8 @@ function styleDiv(input) {
   input.style.borderStyle='solid';
   input.style.borderColor='black';
 }
+
+//Add delete and mark read buttons to a book passed into this function
 function addButtons(input) {
   let delBtn = document.createElement('button');
   delBtn.innerText = "Delete Book";
@@ -89,6 +79,7 @@ function addButtons(input) {
   readBtn.addEventListener('click', readBook, false);
   readBtn.myParam2 = readBtn.parentElement;
 }
+
 //diplays book on screen when book is submitted
 function createDiv() {
   let myObj = myLibrary[myLibrary.length-1];
@@ -106,11 +97,12 @@ function createDiv() {
   document.body.appendChild(div);
 }
 
+//Deletes book passed into this function
 function deleteBook(evt) {
   evt.currentTarget.myParam.remove();
 }
 
-
+//This is the functionality behind marking a book as read or unread
 function readBook(evt) {
   objIndex = parseInt(evt.currentTarget.myParam2.id);
   myObj = myLibrary[objIndex]
