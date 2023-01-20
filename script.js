@@ -86,7 +86,7 @@ function createDiv() {
   let author = myObj["author"];
   let title = myObj["title"];
   let numOfPages = myObj["numOfPages"];
-  let read = myObj.isRead === true ? 'read' : 'unnnread';
+  let read = myObj.isRead === true ? 'read' : 'unread';
   let index = myObj["index"];
   let div = document.createElement('div');
   div.setAttribute('id', (globalindex-1));
