@@ -58,5 +58,14 @@ h1{
   display: none;
 }
 
+.error{
+  font-weight: 600;
+  color:red;
+  background-color: black;
+  text-transform: uppercase;
+}
 
+.error-border{
+  border-color: red;
+}
 
