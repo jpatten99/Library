@@ -12,9 +12,46 @@ class Book{
   }
 }
 
+const validate = () => {
+  let flag = true;
+  if(!document.getElementById('author').value){
+    document.getElementById('author-error').innerText = "required";
+    document.getElementById('author').classList.add('error-border');
+    flag = false;
+  }
+  else{
+    document.getElementById('author-error').innerText = "";
+    document.getElementById('author').classList.remove('error-border');
+  }
+  if(!document.getElementById('title').value){
+    document.getElementById('title-error').innerText = "required";
+    document.getElementById('title').classList.add('error-border');
+    flag = false;
+  }
+  else{
+    document.getElementById('title-error').innerText = "";
+    document.getElementById('title').classList.remove('error-border');
+  }
+  if(!document.getElementById('numOfPages').value){
+    document.getElementById('numOfPages-error').innerText = "required";
+    document.getElementById('numOfPages').classList.add('error-border');
+    flag = false;
+  }
+  else{
+    document.getElementById('numOfPages-error').innerText = "";
+    document.getElementById('numOfPages').classList.remove('error-border');
+  }
+  return flag;
+}
+
 //Function to add the book to the array once the submit button is clicked
 const addBookToLibrary = (ev)=>{
   ev.preventDefault();
+  if(!validate()){
+    console.log("here");
+    return;
+  }
+  
   cb = document.querySelector("#read");
   let book =  new Book(document.getElementById('author').value, document.getElementById('title').value, document.getElementById('numOfPages').value, cb.checked, globalindex)
   globalindex++;
@@ -22,8 +59,12 @@ const addBookToLibrary = (ev)=>{
   document.forms[0].reset();
   displayAddBookButton();
   createDiv();
-  console.log(myLibrary);
-  console.log(cb.checked);
+  document.getElementById('author-error').innerText = "";
+  document.getElementById('title-error').innerText = "";
+  document.getElementById('numOfPages-error').innerText = "";
+  document.getElementById('author').classList.remove('error-border');
+  document.getElementById('title').classList.remove('error-border');
+  document.getElementById('numOfPages').classList.remove('error-border');
 } 
 
 //Make form visible in order to be able to add a book
